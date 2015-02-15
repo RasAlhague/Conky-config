@@ -1,0 +1,123 @@
+# Use Xft?
+use_xft yes
+xftfont Mono:size=9
+xftalpha 1
+#text_buffer_size 2048
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+own_window yes
+own_window_type normal
+own_window_colour black
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 100
+own_window_type desktop
+
+# If own_window is yes, these window manager hints may be used
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+draw_shades no
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 5
+
+# border width
+border_width 1
+
+default_color D4D4D4
+default_shade_color black
+default_outline_color blue
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 1290
+gap_y 30
+
+# Minimum size of text area
+minimum_size 200 0
+maximum_width 300
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about? This only affects certain objects.
+use_spacer none
+
+default_bar_size 0 6
+
+#TAMPLATES
+template0 ${tab 30}
+template1 ${tab 20}
+template2 ${font :bold:size=9}${color FFFFFF}
+template3 ${font}${color FFFFFF}
+
+#--------------------------------------------------------------------------------------
+TEXT
+#System:
+${template3}linux-$kernel${alignr}${time %T}
+${template3}$uptime${template3}${alignr}$loadavg${template3}
+
+#CPU
+${template2}$cpu%${template3} ${cpubar}
+${cpugraph cpu0 989898 EBEBEB}
+${cpubar cpu1 7,70} ${cpubar cpu2 7,70} ${cpubar cpu3 7,70} ${cpubar cpu4 7,70}
+
+#Memory
+${template2}$memperc% ${template3}${template1}${membar}
+${template2}$swapperc% ${template3}${template1}${swapbar}
+
+#Networking
+${template3}D: ${template2}${downspeed eth0}${template3}${tab 80}${template3}U: ${template2}${upspeed eth0}
+${template3}${downspeedgraph eth0 30,150 000000 EBEBEB -t} ${alignc}${template3}${upspeedgraph eth0 30,0 000000 EBEBEB -t}
+
+#File Systems
+${template3}/${template0}${fs_used /}${template1}/ ${fs_size /}${alignr}${fs_bar 6,110 /}
+${template3}/home${template0}${fs_used /home}${template1}/ ${fs_size /home}${alignr}${fs_bar 6,110 /home}
+${template3}HDD${template0}${fs_used /mnt/HDD/}${template1}/ ${fs_size /mnt/HDD/}${alignr}${fs_bar 6,110 /mnt/HDD/}
+${template3}USBHDD${template0}${fs_used /mnt/USBHDD}${template1}/ ${fs_size /mnt/USBHDD}${alignr}${fs_bar 6,110 /mnt/USBHDD}
+${template3}SSD${template0}${fs_used /media/rasalhague/SSD/}${template1}/ ${fs_size /media/rasalhague/SSD/}${alignr}${fs_bar 6,110 /media/rasalhague/SSD/}
+
+${template3}${alignr}PID    CPU%   MEM%
+${template3}${top name 1}${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
+${template3}${top name 2}${alignr}${top pid 2} ${top cpu 2} ${top mem 2}
+${template3}${top name 3}${alignr}${top pid 3} ${top cpu 3} ${top mem 3}
+
+${template3}${top_mem name 1}${alignr}${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+${template3}${top_mem name 2}${alignr}${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+${template3}${top_mem name 3}${alignr}${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
