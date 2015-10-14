@@ -52,12 +52,12 @@ alignment top_left
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 1290
+gap_x 1365
 gap_y 30
 
 # Minimum size of text area
 minimum_size 200 0
-maximum_width 300
+maximum_width 230
 
 # Subtract file system buffers from used memory?
 no_buffers yes
@@ -96,22 +96,27 @@ ${template3}$uptime${template3}${alignr}$loadavg${template3}
 #CPU
 ${template2}$cpu%${template3} ${cpubar}
 ${cpugraph cpu0 989898 EBEBEB}
-${cpubar cpu1 7,70} ${cpubar cpu2 7,70} ${cpubar cpu3 7,70} ${cpubar cpu4 7,70}
+${cpubar cpu1 7,52} ${cpubar cpu2 7,52} ${cpubar cpu3 7,52} ${cpubar cpu4 7,52}
 
 #Memory
 ${template2}$memperc% ${template3}${template1}${membar}
 ${template2}$swapperc% ${template3}${template1}${swapbar}
 
 #Networking
-${template3}D: ${template2}${downspeed eth0}${template3}${tab 80}${template3}U: ${template2}${upspeed eth0}
-${template3}${downspeedgraph eth0 30,150 000000 EBEBEB -t} ${alignc}${template3}${upspeedgraph eth0 30,0 000000 EBEBEB -t}
+${template3}D: ${template2}${downspeed eno1}${template3}${tab 80}${template3}U: ${template2}${upspeed eno1}
+${template3}${downspeedgraph eno1 30,120 000000 EBEBEB -t} ${alignc}${template3}${upspeedgraph eno1 30,0 000000 EBEBEB -t}
 
 #File Systems
-${template3}/${template0}${fs_used /}${template1}/ ${fs_size /}${alignr}${fs_bar 6,110 /}
-${template3}/home${template0}${fs_used /home}${template1}/ ${fs_size /home}${alignr}${fs_bar 6,110 /home}
-${template3}HDD${template0}${fs_used /mnt/HDD/}${template1}/ ${fs_size /mnt/HDD/}${alignr}${fs_bar 6,110 /mnt/HDD/}
-${template3}USBHDD${template0}${fs_used /mnt/USBHDD}${template1}/ ${fs_size /mnt/USBHDD}${alignr}${fs_bar 6,110 /mnt/USBHDD}
-${template3}SSD${template0}${fs_used /media/rasalhague/SSD/}${template1}/ ${fs_size /media/rasalhague/SSD/}${alignr}${fs_bar 6,110 /media/rasalhague/SSD/}
+# ${template3}/${template0}${fs_used /}${template1}/ ${fs_size /}${alignr}${fs_bar 6,110 /}
+# ${template3}/home${template0}${fs_used /home}${template1}/ ${fs_size /home}${alignr}${fs_bar 6,110 /home}
+# ${template3}HDD${template0}${fs_used /mnt/HDD/}${template1}/ ${fs_size /mnt/HDD/}${alignr}${fs_bar 6,110 /mnt/HDD/}
+# ${template3}USBHDD${template0}${fs_used /mnt/USBHDD}${template1}/ ${fs_size /mnt/USBHDD}${alignr}${fs_bar 6,110 /mnt/USBHDD}
+# ${template3}SSD${template0}${fs_used /media/rasalhague/SSD/}${template1}/ ${fs_size /media/rasalhague/SSD/}${alignr}${fs_bar 6,110 /media/rasalhague/SSD/}
+${template3}/${template0}${fs_size /}${alignr}${fs_bar 6,110 /}
+${template3}/home${template0}${fs_size /home}${alignr}${fs_bar 6,110 /home}
+${template3}HDD${template0}${fs_size /mnt/HDD/}${alignr}${fs_bar 6,110 /mnt/HDD/}
+${template3}USBHDD${template0}${fs_size /mnt/USBHDD}${alignr}${fs_bar 6,110 /mnt/USBHDD}
+${template3}SSD${template0}${fs_size /media/rasalhague/SSD/}${alignr}${fs_bar 6,110 /media/rasalhague/SSD/}
 
 ${template3}${alignr}PID    CPU%   MEM%
 ${template3}${top name 1}${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
